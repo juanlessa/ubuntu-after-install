@@ -83,11 +83,11 @@ def main():
         elif opt == "keepassxc":
             install(senha, "keepassxc")
         elif opt == "metasploit":
-            os.system("gem install bundler")
-            os.system("gem install sqlite3")
-            os.system("gem install rex-text")
-            os.system("gem install pg")
-            os.system("gem install pcaprub")
+            os.system(f"echo '{senha}' | sudo -S gem install bundler")
+            os.system(f"echo '{senha}' | sudo -S gem install sqlite3")
+            os.system(f"echo '{senha}' | sudo -S gem install rex-text")
+            os.system(f"echo '{senha}' | sudo -S gem install pg")
+            os.system(f"echo '{senha}' | sudo -S gem install pcaprub")
             os.system("bundle install")
             os.system(f"echo '{senha}'| sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && \./msfinstall")
             os.system("rm -rf msfinstall")
