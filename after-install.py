@@ -1,4 +1,5 @@
 import os
+from getpass import getpass
 
 
 def install(senha, programa):
@@ -28,11 +29,16 @@ def menu():
 
 
 def main():
+    #altentication
     senha = ""
+    print("You need to enter SUDO password")
     while senha == "":
-        senha = input("Para instalar os softwares é necessario fornecer a senha para sudo\nsudo password: ")
+        senha = getpass()
+    #programs instalation
     while True:
+        #show menu and get options selected
         opt = menu()
+        #validate option
         if opt == "git":
             install(senha,"git")
         elif opt == "programming liberies":
@@ -62,21 +68,18 @@ def main():
             install(senha, "apache2")
         elif opt == "redis":
             install(senha, "redis")
-        elif opt == "asdf":
-            os.system("git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8")
-            os.system("echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc")
-            os.system("echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc")
         elif opt == "python":
-            os.system("asdf plugin-add python")
-            os.system("asdf install python 3.8.5")
-            os.system("asdf global python 3.8.5")
-            os.system("asdf install python 2.7.18")
-            os.system("pip install exploit-patterns")
-            os.system("pip install redis")
+            install(senha, "python3")
+            install(senha, "python3-pip")
+            os.system("pip3 install exploit-patterns")
+            os.system("pip3 install redis")
+            os.system("pip3 install cryptography")
+            os.system("pip3 install pykcs11")
         elif opt == "ruby":
-            os.system("asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git")
-            os.system("asdf install ruby 2.6.6")
-            os.system("asdf global ruby 2.6.6")
+            install(senha, "ruby-full")
+        elif opt == "nodejs":
+            install(senha, "nodejs")
+            install(senha, "npm")
         elif opt == "keepassxc":
             install(senha, "keepassxc")
         elif opt == "metasploit":
@@ -92,6 +95,8 @@ def main():
             install(senha, "nmap")
         elif opt == "ncat":
             install(senha, "ncat")
+        elif opt == "xca":
+            install(senha, "xca")
         elif opt == "ubuntu-restricted-extras":
             install(senha, "ubuntu-restricted-extras")
         elif opt == "vs code":
@@ -117,6 +122,6 @@ def main():
             install(senha, "kdenlive")
 ############################################################################################################################################
 
-
-options = ["git", "programming liberies", "vim-gtk3", "tmux", "apache2", "redis", "asdf", "python", "ruby", "keepassxc","metasploit", "nmap","ncat", "ubuntu-restricted-extras", "vs code", "spotfy", "simplescreenrecorder", "kdenlive"]
+#add insominia
+options = ["git", "programming liberies", "vim-gtk3", "tmux", "apache2", "redis", "python", "ruby", "nodejs", "keepassxc","metasploit", "nmap","ncat", "xca", "ubuntu-restricted-extras", "vs code", "spotfy", "simplescreenrecorder", "kdenlive"]
 main()
