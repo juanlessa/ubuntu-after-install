@@ -6,6 +6,7 @@ def install(senha, programa):
     os.system("echo '{}' | sudo -S apt install -y {}".format(senha, programa))
 ############################################################################################################################################
 
+
 def menu():
     if len(options) % 2 == 0:
         m = len(options)//2
@@ -17,7 +18,8 @@ def menu():
         if len(options) < i+m:
             print("  {:>2} - {:25}".format(i, options[i-1]))
             break
-        print("  {:>2} - {:25} {:>2} - {:25}".format(i, options[i-1], m+i, options[m+i-1]))
+        print("  {:>2} - {:25} {:>2} - {:25}".format(i,
+                                                     options[i-1], m+i, options[m+i-1]))
     res = ""
     while not(res.isnumeric()) or float(res) < 1 or float(res) > len(options):
         res = input("which do you want to install? > ")
@@ -29,18 +31,18 @@ def menu():
 
 
 def main():
-    #altentication
+    # altentication
     senha = ""
     print("You need to enter SUDO password")
     while senha == "":
         senha = getpass()
-    #programs instalation
+    # programs instalation
     while True:
-        #show menu and get options selected
+        # show menu and get options selected
         opt = menu()
-        #validate option
+        # validate option
         if opt == "git":
-            install(senha,"git")
+            install(senha, "git")
         elif opt == "programming liberies":
             install(senha, "build-essential")
             install(senha, "default-jdk")
@@ -104,24 +106,45 @@ def main():
         elif opt == "gns3":
             os.system(f"echo '{senha}' | sudo add-apt-repository ppa:gns3/ppa")
             os.system(f"echo '{senha}' | sudo apt update")
-            os.system(f"echo '{senha}' | sudo apt install gns3-gui gns3-server")
+            os.system(
+                f"echo '{senha}' | sudo apt install gns3-gui gns3-server")
         elif opt == "virtualbox":
             install(senha, "virtualbox")
         elif opt == "spotfy":
             os.system(f"echo '{senha}' | sudo -S apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45")
-            os.system("echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list")
+            os.system(
+                "echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list")
             os.system(f"echo '{senha}' | sudo -S apt update")
             install(senha, "spotify-client")
         elif opt == "simplescreenrecorder":
-            os.system(f"echo '{senha}' | sudo -S add-apt-repository ppa:maarten-baert/simplescreenrecorder")
+            os.system(
+                f"echo '{senha}' | sudo -S add-apt-repository ppa:maarten-baert/simplescreenrecorder")
             os.system(f"echo '{senha}' | sudo -S apt update")
             install(senha, "simplescreenrecorder")
         elif opt == "kdenlive":
-            os.system(f"echo '{senha}' | sudo -S add-apt-repository ppa:sunab/kdenlive-release")
+            os.system(
+                f"echo '{senha}' | sudo -S add-apt-repository ppa:sunab/kdenlive-release")
             os.system(f"echo '{senha}' | sudo -S apt update")
             install(senha, "kdenlive")
 ############################################################################################################################################
 
-#add insominia
-options = ["git", "programming liberies", "vim-gtk3", "tmux", "apache2", "redis", "python", "ruby", "nodejs", "keepassxc","metasploit", "nmap","ncat", "xca", "ubuntu-restricted-extras", "vs code", "spotfy", "simplescreenrecorder", "kdenlive"]
+
+# add insominia
+# add yarn
+# zsh
+# add ohmyzhec
+# add docker and add permissions tu run without sudo
+# add dbeaver
+# add flatremix and qogir themes
+# add fira code hack and jetbrains font
+# add notes application
+# add tulix and config tilix shortcuts (ctrl+alt+T: tilix --> open tilix,
+#                                       F9: tilix --quake --> tilix quake)
+# config tilix splits crtl+alt+R split right, ctrl+alt+E split down
+
+options = ["git", "programming liberies", "vim-gtk3", "tmux", "apache2",
+           "redis", "python", "ruby", "nodejs", "keepassxc", "metasploit",
+           "nmap", "ncat", "xca", "ubuntu-restricted-extras", "vs code",
+           "spotfy", "simplescreenrecorder", "kdenlive"]
+
 main()
