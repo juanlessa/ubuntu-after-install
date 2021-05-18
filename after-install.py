@@ -110,7 +110,7 @@ def main():
                 f"echo '{senha}' | sudo apt install gns3-gui gns3-server")
         elif opt == "virtualbox":
             install(senha, "virtualbox")
-        elif opt == "spotfy":
+        elif opt == "spotify":
             os.system(f"echo '{senha}' | sudo -S apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45")
             os.system(
                 "echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list")
@@ -126,6 +126,8 @@ def main():
                 f"echo '{senha}' | sudo -S add-apt-repository ppa:sunab/kdenlive-release")
             os.system(f"echo '{senha}' | sudo -S apt update")
             install(senha, "kdenlive")
+        elif opt == "speedtest"
+            os.system(senha, "speedtest-cli")
 ############################################################################################################################################
 
 
@@ -145,6 +147,6 @@ def main():
 options = ["git", "programming liberies", "vim-gtk3", "tmux", "apache2",
            "redis", "python", "ruby", "nodejs", "keepassxc", "metasploit",
            "nmap", "ncat", "xca", "ubuntu-restricted-extras", "vs code",
-           "spotfy", "simplescreenrecorder", "kdenlive"]
+           "spotfy", "simplescreenrecorder", "kdenlive", "speedtest-cli"]
 
 main()
