@@ -127,7 +127,7 @@ def main():
             os.system(f"echo '{senha}' | sudo -S apt update")
             install(senha, "kdenlive")
         elif opt == "speedtest"
-            os.system(senha, "speedtest-cli")
+            install(senha, "speedtest-cli")
 ############################################################################################################################################
 
 
