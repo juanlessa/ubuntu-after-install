@@ -136,6 +136,8 @@ def main():
                 f"echo '{password}' | sudo -S add-apt-repository ppa:sunab/kdenlive-release")
             os.system(f"echo '{password}' | sudo -S apt update")
             install(password, "kdenlive")
+        elif opt == "speedtest-cli":
+            install(password, "speedtest-cli")
 ############################################################################################################################################
 
 
@@ -148,13 +150,13 @@ def main():
 # add flatremix and qogir themes
 # add fira code hack and jetbrains font
 # add notes application
-# add tulix and config tilix shortcuts (ctrl+alt+T: tilix --> open tilix,
+# add tilix and config tilix shortcuts (ctrl+alt+T: tilix --> open tilix,
 #                                       F9: tilix --quake --> tilix quake)
 # config tilix splits crtl+alt+R split right, ctrl+alt+E split down
 
 options = ["git", "programming liberies", "vim-gtk3", "tmux", "apache2",
            "redis", "python", "ruby", "nodejs", "keepassxc", "metasploit",
            "nmap", "ncat", "xca", "ubuntu-restricted-extras", "vs code",
-           "spotfy", "simplescreenrecorder", "kdenlive"]
+           "spotfy", "simplescreenrecorder", "kdenlive", "speedtest-cli"]
 
 main()
